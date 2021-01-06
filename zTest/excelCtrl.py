@@ -8,7 +8,7 @@
 import xlrd
 import json
 from xlutils.copy import copy
-from get_token import get_token
+from zTest.get_token import get_token
 
 excelDir = "/Users/healer/Desktop/apicase.xls"
 # 打开Excel文件    formatting_info 保持原样式
@@ -40,4 +40,4 @@ newSheet = newWorkBook.get_sheet(0)
 newSheet.write(2, 9, info)
 newSheet.write(2, 8, json.dumps(res))
 # 保存Excel对象
-newWorkBook.save("/Users/healer/Desktop/Code/Apitest/newExcel/saveapicase.xls")
+newWorkBook.save("/Users/healer/Desktop/Code/Apitest/zTest/newExcel/saveapicase.xls")
