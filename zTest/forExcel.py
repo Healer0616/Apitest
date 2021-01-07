@@ -34,14 +34,8 @@ def get_actual_value():
     return paramsList
 
 
-print(get_actual_value())
+# print(get_actual_value())
 # get_actual_value()
-
-# # 断言
-if get_actual_value() == "用户名或者密码不正确！":
-    info = "pass"
-else:
-    info = "fail"
 
 # 结果写入
 # 文件不存在  创建Excel 写 -- xlwt
@@ -55,7 +49,7 @@ for i in range(2, row):
     for j in range(8, col - 1):
         # print(json.dumps(get_actual_value()))
         newSheet.write(i, j, json.dumps(get_actual_value()[i - 2], ensure_ascii=False))
-        if re.search("用户名或者密码不正确！", str(get_actual_value()[i - 2])):
+        if re.search("TK", str(get_actual_value()[i - 2])):
             info = "pass"
         else:
             info = "fail"
@@ -67,3 +61,4 @@ for i in range(2, row):
 
 # 保存Excel对象
 newWorkBook.save("/Users/healer/Desktop/Code/Apitest/zTest/newExcel/forWrite.xls")
+print("执行成功")
