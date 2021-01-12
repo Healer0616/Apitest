@@ -37,11 +37,3 @@ class Logger:
     def get_log(self):
         """定义一个函数，回调logger实例"""
         return self.logger
-
-# if __name__ == '__main__':
-#     lg = Logger()
-#     lg.logger.debug('this is a logger debug message')
-#     lg.logger.info('this is a logger info message')
-#     lg.logger.warning('this is a logger warning message')
-#     lg.logger.error('this is a logger error message')
-#     lg.logger.error('this is a logger error message')
