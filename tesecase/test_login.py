@@ -6,9 +6,12 @@
 # @Software: PyCharm
 
 import json
+import logging
+from zTest.logger import Logger
 from zTest.apiMethod import RunMain
 
 host = "http://zx.1daas.com/api"
+logger = Logger()
 
 
 def test_login():
@@ -97,11 +100,12 @@ def test_cart_list():
         "token": test_login()
     }
     res = RunMain().run_main("get", url, data)
-    assert res.status_code == 200
-    print("token:"+test_login())
-    print("goodsid:"+str(test_cart_add()["goodsid"]))
-    print(res.json())
-    print(res.json()["data"]["cartlist"])
+    # assert res.status_code == 200
+    # logger.get_log().debug(res)
+    # print("token:"+test_login())
+    # print("goodsid:"+str(test_cart_add()["goodsid"]))
+    # print(res.json())
+    # print(res.json()["data"]["cartlist"])
     # assert test_cart_add()["goodsid"] in res.json()["data"]["cartlist"]
 
 

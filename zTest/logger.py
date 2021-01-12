@@ -6,12 +6,42 @@
 # @Software: PyCharm
 
 import logging
+import time
 
-# filemode:覆盖写入
-logging.basicConfig(filename="logs", filemode="w", level=logging.DEBUG,
-                    format='日期：%(asctime)s - 名称：%(name)s - %(message)s - %(levelno)s - %(levelname)s - %(pathname)s - %(filename)s - %(funcName)s - %(lineno)d - %(thread)d - %(threadName)s - %(process)d')
 
-logging.debug('this is debug message')
-logging.info('this is info message')
-logging.warning('this is warning message')
-logging.error("this is error message")
+class Logger:
+    def __init__(self):
+        # 第一步，创建一个logger
+        self.logger = logger = logging.getLogger()
+        self.logger.setLevel(logging.DEBUG)  # Log等级总开关
+
+        # 第二步，创建一个handler，利用时间戳命名用于写入日志文件
+        now = time.strftime("%Y-%m-%d-%H:%M:%S", time.localtime(time.time()))
+        logfile = '/Users/healer/Desktop/Code/apiTest/logs/' + now + "testlog.txt"
+        fh = logging.FileHandler(logfile, mode='w')
+        fh.setLevel(logging.DEBUG)  # 输出到file的log等级的开关
+
+        # 第三步，再创建一个handler，用于输出到控制台
+        ch = logging.StreamHandler()
+        ch.setLevel(logging.WARNING)  # 输出到console的log等级的开关
+
+        # 第四步，定义handler的输出格式
+        formatter = logging.Formatter("%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s")
+        fh.setFormatter(formatter)
+        ch.setFormatter(formatter)
+
+        # 第五步，将logger添加到handler里面
+        logger.addHandler(fh)
+        logger.addHandler(ch)
+
+    def get_log(self):
+        """定义一个函数，回调logger实例"""
+        return self.logger
+
+# if __name__ == '__main__':
+#     lg = Logger()
+#     lg.logger.debug('this is a logger debug message')
+#     lg.logger.info('this is a logger info message')
+#     lg.logger.warning('this is a logger warning message')
+#     lg.logger.error('this is a logger error message')
+#     lg.logger.error('this is a logger error message')
