@@ -10,7 +10,7 @@ import json
 from xlutils.copy import copy
 from zTest.get_token import get_token
 
-excelDir = "/Users/healer/Desktop/apicase.xls"
+excelDir = "/Users/healer/Desktop/Code/Apitest/zTest/newExcel/apicase.xls"
 # 打开Excel文件    formatting_info 保持原样式
 workBook = xlrd.open_workbook(excelDir, formatting_info=True)
 sheets = workBook.sheet_names()
@@ -41,3 +41,4 @@ newSheet.write(2, 9, info)
 newSheet.write(2, 8, json.dumps(res))
 # 保存Excel对象
 newWorkBook.save("/Users/healer/Desktop/Code/Apitest/zTest/newExcel/saveapicase.xls")
+print("保存成功")
