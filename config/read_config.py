@@ -19,6 +19,7 @@ class ReadConfig:
 
 
 if __name__ == '__main__':
-    root_dir = os.path.dirname(os.path.abspath("read_config.py"))  # 获取当前文件所在目录的上一级目录,绝对路径
-    res = ReadConfig().read_config(section='HTTP', option='host', file_name=os.path.join(root_dir, "config.ini"))
+    root_dir = os.path.dirname(os.path.abspath("."))  # 获取当前文件所在目录的上一级目录,绝对路径
+    res = ReadConfig().read_config(section='HTTP', option='host', file_name=os.path.join(root_dir, "config/config.ini"))
     print(res)
+    print(os.path.join(os.path.dirname(os.path.abspath(".")), "config/config.ini"))
