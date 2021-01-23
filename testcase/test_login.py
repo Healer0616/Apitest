@@ -6,23 +6,32 @@
 # @Software: PyCharm
 
 import json
+import os
 from zTest.logger import Logger
 from zTest.apiMethod import RunMain
-
-
+from config.read_config import ReadConfig
+from config import config
 
 
 class TestLogin:
     def setup(self):
-        self.host = "http://zx.1daas.com/api"
+        self.base_url = config.base_url
         self.logger = Logger()
+
+    # def __init__(self):
+    #     """
+    #     普通类构造方法
+    #     """
+    #     self.cf = ReadConfig()
+    #     self.base_url = self.cf.read_config(section='HTTP', option='host',
+    #                                         file_name="/Users/healer/Desktop/Code/apiTest/config/config.ini")
 
     def test_login(self):
         """
         获取登录token
         :return:
         """
-        url = self.host + "/member/login"
+        url = self.base_url + "/member/login"
         data = {
             "name": "18857292945",
             "password": "c4389ffffe6ae7ffee519fafd7bcc03b18ced6f6",
@@ -39,7 +48,7 @@ class TestLogin:
         获取用户信息
         :return:
         """
-        url = self.host + "/member/info"
+        url = self.base_url + "/member/info"
         data = {
             "token": self.test_login()
         }
@@ -55,7 +64,7 @@ class TestLogin:
         商品列表
         :return:
         """
-        url = self.host + "/goods/list"
+        url = self.base_url + "/goods/list"
         data = {
             "shopid": 4,
             "from": 1,
@@ -73,7 +82,7 @@ class TestLogin:
         加入购物车
         :return:
         """
-        url = self.host + "/cart/add"
+        url = self.base_url + "/cart/add"
         data = {
             "goodsid": self.test_goods_list(),
             "token": self.test_login(),
@@ -92,18 +101,15 @@ class TestLogin:
         购物车列表
         :return:
         """
-        url = self.host + "/cart/list"
+        url = self.base_url + "/cart/list"
         data = {
             "token": self.test_login()
         }
         res = RunMain().run_main("get", url, data)
         assert res.status_code == 200
-        self.logger.get_log().debug(res)
+        # self.logger.get_log().debug(res)
         # print("token:"+test_login())
         # print("goodsid:"+str(test_cart_add()["goodsid"]))
         print(res.json())
         # print(res.json()["data"]["cartlist"])
         # assert test_cart_add()["goodsid"] in res.json()["data"]["cartlist"]
-
-# if __name__ == '__main__':
-#     login = TestLogin()
