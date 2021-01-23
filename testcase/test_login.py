@@ -6,16 +6,14 @@
 # @Software: PyCharm
 
 import json
-import os
-from zTest.logger import Logger
-from zTest.apiMethod import RunMain
-from config.read_config import ReadConfig
-from config import config
+from lib.logger import Logger
+from lib.sendMethod import RunMain
+from config import setting
 
 
 class TestLogin:
     def setup(self):
-        self.base_url = config.base_url
+        self.base_url = setting.base_url
         self.logger = Logger()
 
     # def __init__(self):
