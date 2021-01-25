@@ -19,13 +19,18 @@ base_url = "http://zx.1daas.com/api"
 timeout = "1.0"
 
 # [EMAIL]
-mail_host = "smtp.163.com"
-mail_user = "xxx@163.com"
-mail_pass = "*********"
-mail_port = "25"
-sender = "xxx@163.com"
-receiver = "xxxx@qq.com/xxxx@qq.com"
-subject = "python"
-content = "All interface test has been complited\nplease read the report file about the detile of result in the attachment."
+mail_host = "smtp.qq.com"
+# 发件人邮箱
+mail_user = "1175429380@qq.com"
+# 发件人授权码
+mail_pass = "wpanjothgyvkhcif"
+# 端口号默认:25 SSL:465
+mail_port = 25
+# 收件人邮箱
+receiver = "healer0616@126.com"
+# 主题
+subject = "主题"
+# 正文
+content = "正文"
 testuser = "Someone"
-on_off = "1"
+on_off = 1
